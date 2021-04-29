@@ -2,20 +2,26 @@ package com.curso.proyecto.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
 import com.curso.proyecto.integrador.bo.Proyecto;
 import com.curso.proyecto.repository.ProyectoRepository;
+
 @Service
+@Transactional
 public class ProyectoServiceImp  implements ProyectoService{
 
 	@Autowired
 	private ProyectoRepository proyectoRepository;
+	
 	@Override
-	public List<Proyecto> buscarProyecto() {
+	public List<Proyecto> buscarProyectos() {
 
-		return (List<Proyecto>)proyectoRepository.findAll();
+		return (List<Proyecto>) proyectoRepository.findAll();
+		
 	}
 
 	@Override
@@ -43,5 +49,12 @@ public class ProyectoServiceImp  implements ProyectoService{
 		
 	}
 
+	@Override
+	public List<Proyecto> buscarProyectos(String nombre) {
+		
+		return proyectoRepository.buscarProyectos("%" + nombre);
+	}
+
+	
 	
 }

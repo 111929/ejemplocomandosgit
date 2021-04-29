@@ -14,7 +14,10 @@ public class Usuario {
 
 	@ManyToMany(mappedBy="usuarios")
 	private List<Tarea> tareas= new ArrayList <Tarea>();
-
+	
+	
+    @ManyToMany (mappedBy="usuarios")
+    private List<Proyecto> proyectos= new ArrayList<Proyecto>();
 	public Long getIdUsuario() {
 	return idUsuario;
 	}

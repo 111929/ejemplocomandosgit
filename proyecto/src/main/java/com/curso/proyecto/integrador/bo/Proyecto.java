@@ -16,7 +16,7 @@ public class Proyecto {
   @ManyToOne
   private Usuario responsable;
   
-  @OneToMany
+  @ManyToMany
   private List<Usuario> usuarios= new ArrayList<Usuario>();
   
   @OneToMany

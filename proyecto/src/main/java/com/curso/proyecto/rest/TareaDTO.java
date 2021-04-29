@@ -10,6 +10,7 @@ public class TareaDTO {
 	private int totalHoras;
 	private Long idEstado;
 	private String tipoEstado;
+	
 	public Long getIdTarea() {
 		return idTarea;
 	}
