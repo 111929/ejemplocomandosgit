@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.curso.proyecto.integrador.bo.Proyecto;
+
 import com.curso.proyecto.integrador.bo.Tarea;
 import com.curso.proyecto.service.TareaService;
 
