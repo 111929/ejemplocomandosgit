@@ -7,11 +7,25 @@ import javax.persistence.*;
 @Entity(name="Tareas")
 public class Tarea {
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="SEQUENCE1")
 	private Long idTarea;
 	private String nombre;
 	private int totalHoras;
+	private Long idEstado;
+	private Long idTipoTarea;
 
+	public Long getIdEstado() {
+		return idEstado;
+	}
+	public void setIdEstado(Long idEstado) {
+		this.idEstado = idEstado;
+	}
+	public Long getIdTipoTarea() {
+		return idTipoTarea;
+	}
+	public void setIdTipoTarea(Long idTipoTarea) {
+		this.idTipoTarea = idTipoTarea;
+	}
 	@ManyToMany
 	private List<Usuario> usuarios= new  ArrayList<Usuario>();
 	
@@ -21,8 +35,15 @@ public class Tarea {
 	private TipoDeEstado tiposDeEstados;
 	@OneToMany
 	private List<Comentario> comentarios= new ArrayList<Comentario>();
+	@ManyToOne
+	private Proyecto proyecto;
 	
-	
+	public Proyecto getProyecto() {
+		return proyecto;
+	}
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
+	}
 	public Long getIdTarea() {
 		return idTarea;
 	}

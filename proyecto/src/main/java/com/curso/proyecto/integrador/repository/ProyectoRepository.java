@@ -1,4 +1,4 @@
-package com.curso.proyecto.repository;
+package com.curso.proyecto.integrador.repository;
 
 
 
@@ -14,8 +14,8 @@ public interface ProyectoRepository extends CrudRepository<Proyecto, Long> {
 
 	
 	
-	@Query(value="from Proyecto p where p.nombre like :nombre")
-	public List<Proyecto> buscarProyectos(@Param("nombre") String nombre);
+	/*@Query(value="from Proyecto p where p.nombre like :nombre")
+	public List<Proyecto> buscarProyectos(@Param("nombre") String nombre);*/
 	
 	
 }

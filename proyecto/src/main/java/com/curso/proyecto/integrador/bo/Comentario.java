@@ -17,7 +17,7 @@ public class Comentario {
 		return idComentario;
 	}
 
-	public void setId_Comentario(Long idComentario) {
+	public void setIdComentario1(Long idComentario) {
 		this.idComentario = idComentario;
 	}
 

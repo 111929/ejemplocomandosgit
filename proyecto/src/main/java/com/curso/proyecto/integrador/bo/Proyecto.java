@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 public class Proyecto {
   @Id
-  @GeneratedValue 
+  @GeneratedValue (strategy=GenerationType.SEQUENCE, generator="SEQUENCE1")
   private Long idProyecto;
   private String nombre;
   private int totalHorasProyecto;
@@ -19,7 +19,7 @@ public class Proyecto {
   @ManyToMany
   private List<Usuario> usuarios= new ArrayList<Usuario>();
   
-  @OneToMany
+  @OneToMany(mappedBy= "proyecto")
   private List<Tarea> tareas= new ArrayList<Tarea>();
   
  
@@ -27,7 +27,11 @@ public class Proyecto {
 	return tareas;
   }
 
-  public List<Usuario> getUsuarios() {
+  public void setTotalHorasProyecto(int totalHorasProyecto) {
+	this.totalHorasProyecto = totalHorasProyecto;
+}
+
+public List<Usuario> getUsuarios() {
 	return usuarios;
   }
 
@@ -55,15 +59,21 @@ public class Proyecto {
 	this.nombre = nombre;
   }
 
+  public int getTotalHorasUsadasProyecto() {
+	  int totalHorasUsadas=0;
+	for(Tarea t : this.getTareas()) {
+	 totalHorasUsadas+= t.getTotalHoras();
+	}
+	return this.totalHorasProyecto-totalHorasUsadas;
+  }
+
+  
+
   public int getTotalHorasProyecto() {
 	return totalHorasProyecto;
-  }
+}
 
-  public void setTotalHorasProyecto(int totalHorasProyecto) {
-	this.totalHorasProyecto = totalHorasProyecto;
-  }
-
-  public Usuario getResponsable() {
+public Usuario getResponsable() {
 	return responsable;
   }
 

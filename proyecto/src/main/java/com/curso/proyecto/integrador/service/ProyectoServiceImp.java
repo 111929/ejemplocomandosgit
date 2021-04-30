@@ -1,4 +1,4 @@
-package com.curso.proyecto.service;
+package com.curso.proyecto.integrador.service;
 
 import java.util.List;
 
@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
 import com.curso.proyecto.integrador.bo.Proyecto;
-import com.curso.proyecto.repository.ProyectoRepository;
+import com.curso.proyecto.integrador.bo.Usuario;
+import com.curso.proyecto.integrador.repository.ProyectoRepository;
+import com.curso.proyecto.integrador.repository.UsuarioRepository;
 
 @Service
 @Transactional
@@ -16,12 +18,13 @@ public class ProyectoServiceImp  implements ProyectoService{
 
 	@Autowired
 	private ProyectoRepository proyectoRepository;
-	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	@Override
 	public List<Proyecto> buscarProyectos() {
-
-		return (List<Proyecto>) proyectoRepository.findAll();
-		
+        List<Proyecto> proyectos= (List<Proyecto>)
+		 proyectoRepository.findAll();
+		return proyectos;
 	}
 
 	@Override
@@ -50,10 +53,16 @@ public class ProyectoServiceImp  implements ProyectoService{
 	}
 
 	@Override
-	public List<Proyecto> buscarProyectos(String nombre) {
+	public void AgregarUsuario(Long idProyecto, Long idUsuario) {
+		Proyecto proyecto= proyectoRepository.findById(idProyecto).get();
+		Usuario usuario = usuarioRepository.findById(idUsuario).get();
+		 proyecto.getUsuarios().add(usuario);
+		 usuario.getProyectos().add(proyecto);
+		proyectoRepository.save(proyecto);
 		
-		return proyectoRepository.buscarProyectos("%" + nombre);
 	}
+
+    
 
 	
 	

@@ -1,4 +1,4 @@
-package com.curso.proyecto.rest;
+package com.curso.proyecto.integrador.rest;
 
 import java.time.LocalDate;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.curso.proyecto.rest;
+package com.curso.proyecto.integrador.rest;
 
 import com.curso.proyecto.integrador.bo.TipoDeTarea;
 

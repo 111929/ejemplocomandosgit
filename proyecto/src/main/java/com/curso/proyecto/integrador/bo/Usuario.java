@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 public class Usuario {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE1")
 	private Long idUsuario;
 	private String nombre;
 	private String apellido;
@@ -18,6 +18,15 @@ public class Usuario {
 	
     @ManyToMany (mappedBy="usuarios")
     private List<Proyecto> proyectos= new ArrayList<Proyecto>();
+    
+	public List<Proyecto> getProyectos() {
+		return proyectos;
+	}
+
+	public void setProyectos(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
+	}
+
 	public Long getIdUsuario() {
 	return idUsuario;
 	}

@@ -1,4 +1,4 @@
-package com.curso.proyecto.rest;
+package com.curso.proyecto.integrador.rest;
 
 import com.curso.proyecto.integrador.bo.Tarea;
 import com.curso.proyecto.integrador.bo.TipoDeEstado;
@@ -9,7 +9,8 @@ public class TareaDTO {
 	private String nombre;
 	private int totalHoras;
 	private Long idEstado;
-	private String tipoEstado;
+	
+	private Long idProyecto;
 	
 	public Long getIdTarea() {
 		return idTarea;
@@ -17,6 +18,14 @@ public class TareaDTO {
 
 	public void setIdTarea(Long idTarea) {
 		this.idTarea = idTarea;
+	}
+
+	public Long getIdProyecto() {
+		return idProyecto;
+	}
+
+	public void setIdProyecto(Long idProyecto) {
+		this.idProyecto = idProyecto;
 	}
 
 	public String getNombre() {
@@ -43,13 +52,6 @@ public class TareaDTO {
 		this.idEstado = idEstado;
 	}
 
-	public String getTipoEstado() {
-		return tipoEstado;
-	}
-
-	public void setTipoEstado(String tipoEstado) {
-		this.tipoEstado = tipoEstado;
-	}
 
 	public Long getIdTipoTarea() {
 		return idTipoTarea;
@@ -81,11 +83,13 @@ public class TareaDTO {
 		this.totalHoras = tarea.getTotalHoras();
 		TipoDeEstado tipoDeEstado = tarea.getTiposDeEstados();
 		TipoDeTarea tipoDeTarea= tarea.getTiposDeTareas();
-		if(tipoDeEstado != null && tipoDeTarea!= null) {
+		this.idProyecto= tarea.getProyecto().getIdProyecto();
+		if(tipoDeEstado != null && tipoDeTarea!= null ) {
 			this.idEstado= tipoDeEstado.getIdEstado();
-			this.tipoEstado= tipoDeEstado.getDescripcion();
+			
 			this.idTipoTarea= tipoDeTarea.getIdTipoTarea();
 			this.tipoTarea=tipoDeTarea.getDescripcion();
+			
 		}
 		
 	}

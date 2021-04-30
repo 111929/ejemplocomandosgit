@@ -1,4 +1,4 @@
-package com.curso.proyecto.repository;
+package com.curso.proyecto.integrador.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

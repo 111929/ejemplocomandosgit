@@ -1,14 +1,27 @@
-package com.curso.proyecto.rest;
+package com.curso.proyecto.integrador.rest;
 
 import com.curso.proyecto.integrador.bo.Proyecto;
 
 public class ProyectoDTO {
- private Long id;
+ private Long idProyecto;
  private String nombre;
  private int totalHorasProyecto;
  private String UsuarioResponsable;
+ 
 
  
+ 	public ProyectoDTO() {
+		
+	}
+	public ProyectoDTO(Proyecto proyecto) {
+		
+		this.idProyecto = proyecto.getIdProyecto();
+		this.nombre = proyecto.getNombre();
+		this.totalHorasProyecto = proyecto.getTotalHorasProyecto();	
+		if(proyecto.getResponsable()!= null) {
+		this.UsuarioResponsable= proyecto.getResponsable().getNombre();
+		}
+	}
  
  	public String getUsuarioResponsable() {
 	return UsuarioResponsable;
@@ -18,10 +31,10 @@ public class ProyectoDTO {
     }
 	
  	public Long getId() {
-		return id;
+		return idProyecto;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.idProyecto = id;
 	}
 	public String getNombre() {
 	return nombre;
@@ -36,18 +49,6 @@ public class ProyectoDTO {
 	this.totalHorasProyecto = totalHorasProyecto;
  	}
  	
-	public ProyectoDTO() {
 	
-	}
-	public ProyectoDTO(Proyecto proyecto) {
-		
-		this.id = proyecto.getIdProyecto();
-		this.nombre = proyecto.getNombre();
-		this.totalHorasProyecto = proyecto.getTotalHorasProyecto();		
-	
-			this.UsuarioResponsable= proyecto.getResponsable().getNombre();
-		
-	}
-    
  
 }

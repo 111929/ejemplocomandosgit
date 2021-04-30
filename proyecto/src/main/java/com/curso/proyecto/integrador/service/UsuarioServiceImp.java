@@ -1,20 +1,28 @@
-package com.curso.proyecto.service;
+package com.curso.proyecto.integrador.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.curso.proyecto.integrador.bo.Comentario;
 import com.curso.proyecto.integrador.bo.Usuario;
-import com.curso.proyecto.repository.UsuarioRepository;
-
+import com.curso.proyecto.integrador.repository.ComentarioRepository;
+import com.curso.proyecto.integrador.repository.UsuarioRepository;
+@Service
+@Transactional
 public class UsuarioServiceImp implements UsuarioService{
 
 	@Autowired
 	 UsuarioRepository usuarioRepository;
+	@Autowired
+	private ComentarioRepository comentarioRepository;
 	@Override
 	public List<Usuario> buscarUsuario() {
-		
-		return (List<Usuario>) usuarioRepository.findAll();
+		List<Usuario> usuarios= (List<Usuario>) usuarioRepository.findAll();
+		return usuarios;
 	}
 
 	@Override
@@ -38,6 +46,12 @@ public class UsuarioServiceImp implements UsuarioService{
 	@Override
 	public void actualizarUsuario(Usuario usuario) {
 		usuarioRepository.save(usuario);
+		
+	}
+
+	@Override
+	public void generarcomentario(Comentario comentario) {
+		comentarioRepository.save(comentario);
 		
 	}
 
