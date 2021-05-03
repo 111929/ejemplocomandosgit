@@ -57,13 +57,13 @@ public class TareaRestController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage(),e);
 			}			
 	}
-	@PostMapping("/{id}/tareaproyecto")
+	@PostMapping()
 	public ResponseEntity<TareaDTO> altaNuevaTarea(@Valid @RequestBody TareaDTO tareaDTO) {
 	try {
 		Tarea tarea= new Tarea();		
 		Proyecto proyecto= proyectoService.buscarProyectoPorId(tareaDTO.getIdProyecto());
 		TipoDeTarea tipoTarea = tareaService.obtenerTipoTarea(tareaDTO.getIdTipoTarea());
-		TipoDeEstado tipoEstado= tareaService.obtenerEstado(tareaDTO.getIdEstado());		
+		TipoDeEstado tipoEstado= tareaService.obtenerEstado(tareaDTO.getIdEstado());			
 		tarea.setNombre(tareaDTO.getNombre());
 		tarea.setTotalHoras(tareaDTO.getTotalHoras());
 		tarea.setProyecto(proyecto);

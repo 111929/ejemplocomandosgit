@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 public class Proyecto {
   @Id
-  @GeneratedValue (strategy=GenerationType.SEQUENCE, generator="SEQUENCE1")
+  @GeneratedValue 
   private Long idProyecto;
   private String nombre;
   private int totalHorasProyecto;

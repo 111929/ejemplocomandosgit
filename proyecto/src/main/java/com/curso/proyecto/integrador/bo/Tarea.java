@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity(name="Tareas")
 public class Tarea {
 	@Id
-	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="SEQUENCE1")
+	@GeneratedValue 
 	private Long idTarea;
 	private String nombre;
 	private int totalHoras;
